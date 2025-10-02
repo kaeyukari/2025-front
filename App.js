@@ -4,11 +4,13 @@ import {
   ActivityIndicator, 
   Alert, 
   Button, 
+  Image, 
   StyleSheet, 
   Text, 
   TextInput, 
   View 
 } from 'react-native';
+import imgExcluir from './assets/lixo.png';
 
 export default function App() {
   const [data, setData] = useState([]);
@@ -82,7 +84,20 @@ export default function App() {
         <Text>Buscar dados</Text>
         {
           data && data.map(item => {
-            return <Text>{item.username}</Text>
+            return( 
+              <View 
+              style={{
+                 flexDirection: 'row',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+              }}
+              >
+            <Text key={item.id}>{item.username}</Text>
+            <Image source={imgExcluir} alt="Excluir" height={2} width={2} />
+
+            </View>
+            );
+            
           })}
 
           { loading? (
